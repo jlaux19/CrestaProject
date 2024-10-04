@@ -22,7 +22,7 @@ if __name__ == "__main__":
     table_name = "conversations"
     conversation_df = create_df(table_name, database_uri)
     average_df = find_avg_call_length(conversation_df)
-    percentile_df = find_percentile_call_length(conversation_df, 90)
+    percentile_df = find_percentile_call_length(conversation_df, 0.9)
     customer_info_df = pd.merge(average_df, percentile_df, on='id')
     customer_info_df.to_csv("s3://cresta-takehome/average_call_lengths.csv", index=False)
 
